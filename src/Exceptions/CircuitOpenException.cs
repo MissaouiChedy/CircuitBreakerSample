@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace CircuitBreakerSample
+namespace CircuitBreakerSample.Exceptions
 {
     [Serializable]
     internal class CircuitOpenException : Exception

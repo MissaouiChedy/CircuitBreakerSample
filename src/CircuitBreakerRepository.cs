@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Threading;
 using MongoDB.Driver;
 using CircuitBreakerSample.MongoDatabase;
+using CircuitBreakerSample.Exceptions;
+
 namespace CircuitBreakerSample
 {
     public class CircuitBreakerRepository : IPersonRepository
