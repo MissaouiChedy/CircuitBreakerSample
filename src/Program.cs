@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading;
+
+using CircuitBreakerSample.MongoDatabase;
 namespace CircuitBreakerSample
 {
     class Program

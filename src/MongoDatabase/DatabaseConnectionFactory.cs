@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 
-namespace CircuitBreakerSample
+namespace CircuitBreakerSample.MongoDatabase
 {
     public class DatabaseConnectionFactory
     {

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using MongoDB.Driver;
-
+using CircuitBreakerSample.MongoDatabase;
 namespace CircuitBreakerSample
 {
     public class CircuitBreakerRepository : IPersonRepository

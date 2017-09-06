@@ -2,7 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
 
-namespace CircuitBreakerSample
+namespace CircuitBreakerSample.MongoDatabase
 {
     public class MongoPersonRepository : IPersonRepository
     {
