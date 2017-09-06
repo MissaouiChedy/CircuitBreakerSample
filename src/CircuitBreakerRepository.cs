@@ -41,7 +41,6 @@ namespace CircuitBreakerSample
         private class CircuitBreakerClosed : CircuitBreakerState
         {
             private int _errorCount = 0;
-            private readonly int _errorLimit = 10;
             public CircuitBreakerClosed(CircuitBreakerRepository owner)
                 :base(owner){}
             
@@ -74,7 +73,7 @@ namespace CircuitBreakerSample
             private void _trackErrors(Exception e) 
             {
                 _errorCount += 1;
-                if (_errorCount > _errorLimit) 
+                if (_errorCount > Config.CircuitClosedErrorLimit) 
                 {
                     _owner._state = new CircuitBreakerOpen(_owner);
                 }
@@ -82,14 +81,14 @@ namespace CircuitBreakerSample
         }
         private class CircuitBreakerOpen : CircuitBreakerState
         {
-            public static readonly int OpenTimeout = 4000; //milliseconds
+            
             public CircuitBreakerOpen(CircuitBreakerRepository owner)
                 :base(owner)
             {
                 new Timer( _ => 
                 { 
                     owner._state = new CircuitBreakerHalfOpen(owner); 
-                }, null, OpenTimeout, Timeout.Infinite);
+                }, null, Config.CircuitOpenTimeout, Timeout.Infinite);
             }
 
             public override List<Person> HandleRead()

@@ -9,12 +9,9 @@ namespace CircuitBreakerSample.MongoDatabase
 {
     public class DatabaseConnectionFactory
     {
-        public static string DbName => "CBDatabase";
-        public static string DbUrl => "127.0.0.1";
-
         private static MongoClient _client = new MongoClient(new MongoClientSettings
         {
-            Server = new MongoServerAddress(DbUrl),
+            Server = new MongoServerAddress(Config.DbUrl),
             SocketTimeout = new TimeSpan(0, 0, 0, 2),
             WaitQueueTimeout = new TimeSpan(0, 0, 0, 2),
             ConnectTimeout = new TimeSpan(0, 0, 0, 2),

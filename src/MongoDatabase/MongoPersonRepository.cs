@@ -15,7 +15,7 @@ namespace CircuitBreakerSample.MongoDatabase
         public virtual List<Person> Read()
         {
             return _client
-                    .GetDatabase(DatabaseConnectionFactory.DbName)
+                    .GetDatabase(Config.DbName)
                     .GetCollection<Person>("persons")
                     .Find(new BsonDocument())
                     .ToList();
@@ -23,7 +23,7 @@ namespace CircuitBreakerSample.MongoDatabase
         public virtual void Write(Person person) 
         {
             _client
-              .GetDatabase(DatabaseConnectionFactory.DbName)
+              .GetDatabase(Config.DbName)
               .GetCollection<Person>("persons")
               .InsertOne(person);
         }
