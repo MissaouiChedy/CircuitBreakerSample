@@ -2,6 +2,8 @@
 
 A small .NET Core console application demonstrating the usage of the *Circuit Breaker* design pattern.
 
+This example is discussed in [The Circuit Breaker Pattern Part 2 - C# implementation](http://blog.techdominator.com/article/circuit-breaker-pattern-part-2-csharp-implementation.html)
+
 ## Principle
 
 A *Circuit Breaker* is an object that wraps an integration point to an external system that is usually remote, prone to failure and can sometimes respond with high latency (3rd party service, database, queue).
@@ -34,17 +36,14 @@ The [`src/Config.cs`](https://github.com/MissaouiChedy/CircuitBreakerSample/blob
 The console application will behave normally when the database is available, it will randomly perform sequential reads and writes. You should see something similar to the following in the console:
 
 ```
-Written: { Id: 59, Name: 'Baby Roy 59'}
-Written: { Id: 60, Name: 'Baby Roy 60'}
-Written: { Id: 61, Name: 'Baby Roy 61'}
-Written: { Id: 62, Name: 'Baby Roy 62'}
-Written: { Id: 63, Name: 'Baby Roy 63'}
-Written: { Id: 64, Name: 'Baby Roy 64'}
-Written: { Id: 65, Name: 'Baby Roy 65'}
+Written: { Id: 3, Name: 'Baby Roy 3'}
+Read => { Id: 3, Name: 'Baby Roy 3'}
+Read => { Id: 3, Name: 'Baby Roy 3'}
+Read => { Id: 3, Name: 'Baby Roy 3'}
+Written: { Id: 7, Name: 'Baby Roy 7'}
+Written: { Id: 8, Name: 'Baby Roy 8'}
+Written: { Id: 9, Name: 'Baby Roy 9'}
+Written: { Id: 10, Name: 'Baby Roy 10'}
 ```
 
 **By killing the database instance while the program is running** you will observe how the *Circuit Breaker* behaves when the external system is unavailable...
-
-## Internals
-
-*coming soon*

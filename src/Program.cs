@@ -25,8 +25,9 @@ namespace CircuitBreakerSample
         }
         static void ReadOrWrite(IPersonRepository repository, int i) 
         {
-            var random = new Random(50);
-            if (random.Next() > 25) 
+            var random = new Random();
+            
+            if (random.Next(50) > 25) 
             {
                 // make a write
                 var person = new Person 
@@ -36,11 +37,13 @@ namespace CircuitBreakerSample
                 };
                 repository.Write(person);
                 Console.WriteLine($"Written: {person}");
+                Console.WriteLine("");
             }
             else 
             {
                 // make a read
-                Console.WriteLine(string.Join(", ", repository.Read()));
+                Console.WriteLine($"Read => {string.Join(", ", repository.Read())}");
+                Console.WriteLine("");
             }
         }
     }
